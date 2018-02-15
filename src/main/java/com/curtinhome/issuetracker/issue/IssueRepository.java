@@ -1,6 +1,12 @@
 package com.curtinhome.issuetracker.issue;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-public interface IssueRepository extends JpaRepository<Issue, Long> {
+import java.util.List;
+
+@Repository
+public interface IssueRepository extends CrudRepository<Issue, Long> {
+    List<Issue> findByOwner(long owner);
+    List<Issue> findByTenant(long tenant);
 }
